@@ -28,11 +28,11 @@ Route::add('/api/artist/', function() {
 	$artist->name = isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : null;
 	// $artist->id = isset($_POST['id']) && !empty($_POST['id']) ? (int)$_POST['id'] : null;
 
-	if($artist->name && $artist->id) {
+	if($artist->name) {
 		// var_dump($artist);
 		echo $artist->create();
 	} else {
-		echo "Kan ikke oprette sangen.";
+		echo "Kan ikke oprette artist.";
 	}
 	
 }, 'post');
@@ -62,7 +62,12 @@ Route::add('/api/artist/', function() {
  */
 Route::add('/api/artist/([0-9]*)', function($id) {
 	$artist = new Artist;
-	echo $artist->delete($id);
+	if($artist->id) {
+		echo $artist->delete($id);	
+	} else {
+		echo "Sorry mate, cant do";
+	}
+	
 }, 'delete');
 
 Route::run('/');

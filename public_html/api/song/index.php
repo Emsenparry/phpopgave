@@ -56,6 +56,9 @@ Route::add('/api/song/', function() {
 	
 }, 'put');
 
+/**
+ * Slet en sang
+ */
 Route::add('/api/song/([0-9]*)', function($id) {
 	$song = new Song;
 	echo $song->delete($id);

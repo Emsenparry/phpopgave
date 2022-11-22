@@ -31,8 +31,9 @@ class Artist {
             'id' => array($id, PDO::PARAM_INT)
         );
 
-        $sql = "SELECT id, name, created_at, updated_at
-                FROM artist";
+        $sql = "SELECT name
+                FROM artist
+                WHERE id = :id";
         return $this->db->query($sql, $params, Db::RESULT_SINGLE); 
     }
     
@@ -75,7 +76,9 @@ class Artist {
             'id' => array($id, PDO::PARAM_INT)
         );
 
-        $sql = "DELETE FROM artist
+        $sql = "DELETE FROM artist 
+                JOIN song
+                ON id = artist_id
                 WHERE id = :id";
         return $this->db->query($sql, $params);
     }
