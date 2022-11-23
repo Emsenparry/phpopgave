@@ -2,7 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/assets/incl/init.php');
 
 /**
- * Liste af artists
+ * GET - Liste af artists
  */
 Route::add('/api/artist/', function() {
 	$artist = new Artist; 
@@ -11,7 +11,7 @@ Route::add('/api/artist/', function() {
 });
 
 /**
- * Artist detaljer
+ * GET - Artist detaljer
  */
 Route::add('/api/artist/([0-9]*)', function($id) {
 	$artist = new Artist; 
@@ -51,7 +51,7 @@ Route::add('/api/artist/', function() {
 	if($artist->id && $artist->name) {
 		echo $artist->update();
 	} else {
-		echo "Kan ikke oprette sangen.";
+		echo "Kan ikke opdatere artist.";
 	}
 	
 }, 'put');
@@ -65,7 +65,7 @@ Route::add('/api/artist/([0-9]*)', function($id) {
 	if($artist->id) {
 		echo $artist->delete($id);	
 	} else {
-		echo "Sorry mate, cant do";
+		echo "Kan ikke slette artist.";
 	}
 	
 }, 'delete');

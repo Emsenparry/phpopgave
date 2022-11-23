@@ -2,7 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/assets/incl/init.php');
 
 /**
- * Liste af userss
+ * GET - Liste af users
  */
 Route::add('/api/users/', function() {
 	$users = new Users; 
@@ -11,7 +11,7 @@ Route::add('/api/users/', function() {
 });
 
 /**
- * users detaljer
+ * GET - users detaljer som bliver hentet ud fra id
  */
 Route::add('/api/users/([0-9]*)', function($id) {
 	$users = new Users; 
@@ -25,7 +25,6 @@ Route::add('/api/users/([0-9]*)', function($id) {
 Route::add('/api/users/', function() {
 	// var_dump($_POST);
 	$users = new Users;
-    // $users->id = isset($_POST['id']) && !empty($_POST['id']) ? (int)$_POST['id'] : null;
 	$users->username = isset($_POST['username']) && !empty($_POST['username']) ? $_POST['username'] : null;
     $users->password = isset($_POST['password']) && !empty($_POST['password']) ? $_POST['password'] : null;
     $users->email = isset($_POST['email']) && !empty($_POST['email']) ? $_POST['email'] : null;
@@ -44,7 +43,7 @@ Route::add('/api/users/', function() {
 }, 'post');
 
 /**
- * PUT - Opdater users
+ * PUT - Opdater users (Hentes ud fra id)
  */
 Route::add('/api/users/', function() {
 	$data = file_get_contents("php://input");
@@ -70,16 +69,11 @@ Route::add('/api/users/', function() {
 
 
 /**
- * DELETE - Slet en users
+ * DELETE - Slet en user ud fra id
  */
 Route::add('/api/users/([0-9]*)', function($id) {
 	$users = new Users;
-	if($users->id && $users->username && $users->password && $users->email && $users->firstname && $users->lastname && $users->address && $users->zipcode) {
-		echo $users->delete($id);	
-	} else {
-		echo "Kan ikke oprette users.";
-	}
-	
+	echo $users->delete($id);	
 }, 'delete');
 
 Route::run('/');

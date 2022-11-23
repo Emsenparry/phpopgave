@@ -96,9 +96,7 @@ class Users {
              'id' => array($id, PDO::PARAM_INT)
         );
 
-         $sql = "DELETE FROM artist 
-                 JOIN song
-                 ON id = artist_id
+         $sql = "DELETE FROM users 
                  WHERE id = :id";
          return $this->db->query($sql, $params);
     }

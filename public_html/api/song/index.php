@@ -2,7 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/assets/incl/init.php');
 
 /**
- * Liste af sange
+ * GET - Liste af sange
  */
 Route::add('/api/song/', function() {
 	$song = new Song; 
@@ -11,7 +11,7 @@ Route::add('/api/song/', function() {
 });
 
 /**
- * Sang detaljer
+ * GET - Sang detaljer
  */
 Route::add('/api/song/([0-9]*)', function($id) {
 	$song = new Song; 
@@ -20,7 +20,7 @@ Route::add('/api/song/([0-9]*)', function($id) {
 });
 
 /**
- * POST
+ * POST - Opret en sang
  */
 Route::add('/api/song/', function() {
 	// var_dump($_POST);
@@ -38,6 +38,9 @@ Route::add('/api/song/', function() {
 	
 }, 'post');
 
+/**
+ * PUT - Opdater en sang
+ */
 Route::add('/api/song/', function() {
 	$data = file_get_contents("php://input");
 	parse_str($data, $parsed_data);
@@ -51,13 +54,13 @@ Route::add('/api/song/', function() {
 	if($song->id && $song->title && $song->content && $song->artist_id) {
 		echo $song->update();
 	} else {
-		echo "Kan ikke oprette sangen.";
+		echo "Kan ikke opdatere sangen.";
 	}
 	
 }, 'put');
 
 /**
- * Slet en sang
+ * DELETE - Slet en sang
  */
 Route::add('/api/song/([0-9]*)', function($id) {
 	$song = new Song;
