@@ -16,7 +16,7 @@ class Song {
 
     /**
      * Funktion til at hente lister med
-     * (Leger rundt med LIMIT og ASC/DESC)
+     * (TESTING LIMIT og ASC/DESC)
      */
     public function list() {
         $sql = "SELECT id, title
