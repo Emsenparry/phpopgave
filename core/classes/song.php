@@ -20,7 +20,8 @@ class Song {
     public function list() {
         $sql = "SELECT id, title
                 FROM song
-                ORDER BY title";
+                ORDER BY title DESC
+                LIMIT 10";
         return $this->db->query($sql);   
     }
 
