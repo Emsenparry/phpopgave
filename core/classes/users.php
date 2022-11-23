@@ -45,9 +45,8 @@ class Users {
      */
     public function create() {
         $params = array(
-            'id' => array($this->id, PDO::PARAM_INT),
-            // 'username' => array($this->username, PDO::PARAM_STR),
-            // 'password' => array($this->password, PDO::PARAM_STR),
+            'username' => array($this->username, PDO::PARAM_STR),
+            'password' => array($this->password, PDO::PARAM_STR),
             'email' => array($this->email, PDO::PARAM_STR),
             'firstname' => array($this->firstname, PDO::PARAM_STR),
             'lastname' => array($this->lastname, PDO::PARAM_STR),
@@ -55,8 +54,8 @@ class Users {
             'zipcode' => array($this->zipcode, PDO::PARAM_INT)
         );
 
-        $sql = "INSERT INTO users(id, email, firstname, lastname, address, zipcode)
-                VALUES(:id, :email, :firstname, :lastname, :address, :zipcode)";
+        $sql = "INSERT INTO users(username, password, email, firstname, lastname, address, zipcode)
+                VALUES(:username, :password, :email, :firstname, :lastname, :address, :zipcode)";
         $this->db->query($sql, $params);
         return $this->db->lastInsertId();
     }
@@ -84,7 +83,7 @@ class Users {
                     firstname = :firstname,
                     lastname = :lastname,
                     address = :address,
-                    zipcode = :zipcode
+                    zipcode = :zipcode 
                     WHERE id = :id";
         return $this->db->query($sql, $params);
     }
@@ -92,17 +91,17 @@ class Users {
     /**
      * Delete users
      */
-    // public function delete($id) {
-    //     $params = array(
-    //         'id' => array($id, PDO::PARAM_INT)
-    //     );
+    public function delete($id) {
+         $params = array(
+             'id' => array($id, PDO::PARAM_INT)
+        );
 
-    //     $sql = "DELETE FROM artist 
-    //             JOIN song
-    //             ON id = artist_id
-    //             WHERE id = :id";
-    //     return $this->db->query($sql, $params);
-    // }
+         $sql = "DELETE FROM artist 
+                 JOIN song
+                 ON id = artist_id
+                 WHERE id = :id";
+         return $this->db->query($sql, $params);
+    }
 }
 
 ?>
