@@ -19,7 +19,8 @@ class Artist {
     public function list() {
         $sql = "SELECT id, name
                 FROM artist
-                ORDER BY name";
+                ORDER BY name
+                LIMIT 15";
         return $this->db->query($sql);   
     }
 

@@ -26,7 +26,6 @@ Route::add('/api/artist/', function() {
 	// var_dump($_POST);
 	$artist = new Artist;
 	$artist->name = isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : null;
-	// $artist->id = isset($_POST['id']) && !empty($_POST['id']) ? (int)$_POST['id'] : null;
 
 	if($artist->name) {
 		// var_dump($artist);
