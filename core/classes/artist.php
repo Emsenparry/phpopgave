@@ -2,7 +2,6 @@
 class Artist {
     public $id;
     public $name;
-    public $content;
     public $created_at;
     public $updated_at;
 
@@ -13,7 +12,7 @@ class Artist {
         $this->db = $db;
     }
 
-    /**
+    /** 
      * Funktion til at hente lister med
      */
     public function list() {
