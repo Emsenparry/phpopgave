@@ -8,7 +8,7 @@ Route::add('/api/artist/', function() {
 	$artist = new Artist; 
 	$result = $artist->list();
 	echo Tools::jsonParser($result);
-});
+}); 
 
 /**
  * GET - Artist detaljer
