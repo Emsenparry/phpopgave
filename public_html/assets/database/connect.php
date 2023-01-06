@@ -1,5 +1,5 @@
 <?php
-$dns = "mysql:host=localhost;dbname=techcollege";
+$dns = "mysql:host=localhost;dbname=songbook";
 $username = 'root';
 $password = '';
 
